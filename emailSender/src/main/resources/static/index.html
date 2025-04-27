@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="email.js"></script>
+</head>
+<body>
+    <h2>Enviar Correo</h2>
+    <form id="emailForm">
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" required>
+
+        <label for="username">Nombre de usuario (si aplica):</label>
+        <input type="text" id="username" placeholder="Opcional (solo para New Account)">
+
+        <label for="type">Tipo de correo:</label>
+        <select id="type" required>
+            <option value="newAccount">New Account</option>
+            <option value="forgotPassword">Forgot Password</option>
+            <option value="sendActivationEmail">Activation email with code</option>
+            <option value="passwordChanged">Changed Password notification</option>
+            <option value="lowStock">Low stock notification</option>
+            <option value="purchaseNotification">Purchase notification with product list</option>
+        </select>
+
+        <!-- Campos solo visibles cuando se selecciona "Low stock notification" -->
+        <div id="lowStockFields" style="display:none;">
+            <label for="productName">Nombre del producto:</label>
+            <input type="text" id="productName" placeholder="Nombre del producto">
+
+            <label for="currentStock">Cantidad actual en stock:</label>
+            <input type="number" id="currentStock" placeholder="Cantidad actual en stock">
+        </div>
+
+        <!-- Campos solo visibles cuando se selecciona "Purchase notification" -->
+        <div id="purchaseFields" style="display:none;">
+            <label for="products">Lista de productos (nombre y cantidad):</label>
+            <textarea id="products" placeholder="Escribe los productos y cantidades separados por coma. Ej: Producto1, 2, Producto2, 3"></textarea>
+        </div>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <p id="response"></p>
+</body>
+</html>
